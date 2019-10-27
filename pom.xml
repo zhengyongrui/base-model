@@ -9,6 +9,7 @@
     <version>1.0.0</version>
     <modules>
         <module>framework-model</module>
+        <module>common-model</module>
     </modules>
 
     <packaging>pom</packaging>
