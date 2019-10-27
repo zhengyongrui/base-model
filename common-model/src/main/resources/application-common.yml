@@ -1,0 +1,22 @@
+spring:
+  http:
+    encoding:
+      #解决读取文件乱码的问题
+      force: true
+#actuator配置
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        #激活所有actuator所有监控端点
+        include: '*'
+info:
+  author: 牙子
+  email: zyr@outlook.com
+logging:
+  level:
+    #由于stream-rocketmq一个架包一直在做心跳检查所产生的日志
+    com.alibaba.nacos: error
