@@ -10,6 +10,7 @@
     <modules>
         <module>framework-model</module>
         <module>common-model</module>
+        <module>nacos-model</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -19,7 +20,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-boot.version>2.1.5.RELEASE</spring-boot.version>
-        <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
+        <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
         <spring-cloud-alibaba.version>0.9.0.RELEASE</spring-cloud-alibaba.version>
         <lombok.version>1.18.8</lombok.version>
     </properties>
@@ -55,6 +56,22 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+            <!--子项目包版本 -->
+            <dependency>
+                <groupId>com.zyr</groupId>
+                <artifactId>common-model</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zyr</groupId>
+                <artifactId>framework-model</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zyr</groupId>
+                <artifactId>nacos-model</artifactId>
+                <version>1.0.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

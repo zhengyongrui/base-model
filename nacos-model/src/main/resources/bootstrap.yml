@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 0.0.0.0:80
+        file-extension: yaml
