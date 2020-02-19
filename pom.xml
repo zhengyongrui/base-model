@@ -11,6 +11,7 @@
         <module>framework-model</module>
         <module>common-model</module>
         <module>nacos-model</module>
+        <module>webmagic-model</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -21,7 +22,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-boot.version>2.1.5.RELEASE</spring-boot.version>
         <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
-        <spring-cloud-alibaba.version>0.9.0.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
         <lombok.version>1.18.8</lombok.version>
     </properties>
 
@@ -37,7 +38,7 @@
             </dependency>
             <!--整合spring cloud alibaba版本-->
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
+                <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
                 <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
@@ -75,14 +76,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
