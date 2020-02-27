@@ -1,6 +1,6 @@
 package util.beans;
 
-import com.zyr.common.util.beans.TransferUtil;
+import com.zyr.common.util.beans.CommonBeanUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
@@ -22,7 +22,7 @@ public class TransferUtilTest {
         sourceBean.setStr1("1");
         sourceBean.setInt1(1);
         sourceBean.setInt2(2);
-        TransferUtilTestBeanByTarget targetBean = TransferUtil.copyBean(sourceBean, TransferUtilTestBeanByTarget.class, false);
+        TransferUtilTestBeanByTarget targetBean = CommonBeanUtil.copyBean(sourceBean, TransferUtilTestBeanByTarget.class, false);
         if (!"TransferUtilTestBeanByTarget{str1='1', str2='1', int1=2, int2=1}".equals(Optional.ofNullable(targetBean).orElse(new TransferUtilTestBeanByTarget()).toString())) {
             throw new Exception("TransferUtil测试通过不通过");
         } else {

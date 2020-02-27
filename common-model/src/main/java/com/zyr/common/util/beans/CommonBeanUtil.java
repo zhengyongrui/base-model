@@ -1,5 +1,7 @@
 package com.zyr.common.util.beans;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.ReflectUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
@@ -18,7 +20,7 @@ import java.util.stream.Collectors;
  * @version 1.0
  * Create In  2019-03-28
  */
-public class TransferUtil {
+public class CommonBeanUtil extends BeanUtil {
 
     /**
      * 复制对象列表
@@ -28,7 +30,7 @@ public class TransferUtil {
      * @param <T>     返回的对象泛型
      * @return .
      */
-    public static <T> List<T> copyBeanList(final List poList, Class<?> voClass) {
+    public static <T> List<T> copyBeanList(final List poList, Class<T> voClass) {
         return copyBeanList(poList, voClass, true);
     }
 
@@ -65,15 +67,10 @@ public class TransferUtil {
      * @param <T>          返回的对象泛型
      * @return .
      */
-    public static <T> T copyBean(Object po, Class<?> voClass, boolean copySameName) {
-        try {
-            T vo = (T) voClass.newInstance();
-            vo = copyBean(po, vo, copySameName);
-            return vo;
-        } catch (IllegalAccessException | InstantiationException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public static <T> T copyBean(Object po, Class<T> voClass, boolean copySameName) {
+        T vo = (T) ReflectUtil.newInstance(voClass);
+        vo = copyBean(po, vo, copySameName);
+        return vo;
     }
 
     /**
@@ -101,7 +98,7 @@ public class TransferUtil {
      * @param <T>          返回的对象泛型
      * @return .
      */
-    public static <T> List<T> copyBeanList(final List poList, Class<?> voClass, boolean copySameName) {
+    public static <T> List<T> copyBeanList(final List poList, Class<T> voClass, boolean copySameName) {
         if (poList == null) {
             return null;
         } else {
@@ -144,7 +141,7 @@ public class TransferUtil {
         if (!CollectionUtils.isEmpty(voFieldListForSync)) {
             for (Field voField : voFieldListForSync) {
                 List<String> annotationValueList = getAnnotationValueList(voField);
-                for (String annotationValue: annotationValueList) {
+                for (String annotationValue : annotationValueList) {
                     Optional<Field> poFieldOptional = getDeclaredFieldList(po.getClass(), null, true).stream().filter(poField ->
                             poField.getName().equals(annotationValue)
                     ).findFirst();
@@ -182,8 +179,9 @@ public class TransferUtil {
 
     /**
      * 获取对象类型的字段
-     * @param voClass 对象类型
-     * @param fieldList 字段列表
+     *
+     * @param voClass         对象类型
+     * @param fieldList       字段列表
      * @param isGetSuperclass 是否获取父级字段
      * @return .
      */
