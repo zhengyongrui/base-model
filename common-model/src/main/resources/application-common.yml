@@ -20,3 +20,8 @@ logging:
   level:
     #由于stream-rocketmq一个架包一直在做心跳检查所产生的日志
     com.alibaba.nacos: error
+server:
+  undertow:
+    direct-buffers: true
+    io-threads: 4
+    worker-threads: 160

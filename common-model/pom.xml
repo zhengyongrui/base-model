@@ -18,13 +18,28 @@
             <artifactId>framework-model</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!--引入的spring基础包-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <!--不使用tomcat改用使用undertow-->
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+        <!--引入undertow-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
+        <!--引入的spring测试包-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>commons-codec</groupId>
